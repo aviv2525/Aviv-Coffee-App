@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AvivCoffee</string>
+    <string name="backBtn">חזור</string>
+    <string name="reserve_seats">שמירת מקומות</string>
+    <string name="aviv_coffee">קפה אביב</string>
+    <string name="menu">תפריט</string>
+    <string name="reservation_details">פרטי הזמנה</string>
+    <string name="somewhere_in_nowhere">איפשהו בעולם</string>
+    <string name="price">מחיר</string>
+    <string name="item_name">שם המוצר</string>
+    <string name="show_vegan_only">הצג טבועני בלבד</string>
+    <string name="aviv_coffee_menu">קפה אביב תפריט</string>
+    <string name="back">חזור</string>
+    <string name="item_espresso">אספרסו</string>
+    <string name="item_cappuccino">קפה הפוך</string>
+    <string name="item_soy_cappuccino">קפה סויה</string>
+    <string name="item_americano">אמריקנו</string>
+    <string name="item_sandwich">כריך</string>
+    <string name="item_vegan_sandwich">כריך טבעוני</string>
+    <string name="item_latte">לאטה</string>
+    <string name="item_chocolate_brownie">בראוניז שוקולד</string>
+</resources>

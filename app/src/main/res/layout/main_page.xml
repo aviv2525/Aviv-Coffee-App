@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background1"
+    android:foregroundTint="#C78B5C"
+    android:orientation="vertical"
+    android:padding="65dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/app_name"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/MenuBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/menu"
+        android:textSize="25sp"
+        android:textStyle="bold">
+
+    </Button>
+
+    <Button
+        android:id="@+id/ReservationBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:text="@string/reservation_details"
+        android:textSize="25sp"
+        android:textStyle="bold">
+
+    </Button>
+
+
+    <Button
+        android:id="@+id/ReserveSeatsBtm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:text="@string/reserve_seats"
+        android:textSize="25sp"
+        android:textStyle="bold">
+
+    </Button>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/LocationBtn"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:background="@color/material_on_background_emphasis_high_type"
+        android:onClick="openLocationInMap"
+        android:text="@string/somewhere_in_nowhere"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:icon="@drawable/baseline_location_on_24"
+        app:iconTint="@color/red" />
+</LinearLayout>

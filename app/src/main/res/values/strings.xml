@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Aviv - Coffee</string>
+    <string name="backBtn">Back</string>
+    <string name="reserve_seats">Reserve Seats</string>
+    <string name="aviv_coffee">Aviv Coffee</string>
+    <string name="menu">Menu</string>
+    <string name="reservation_details">Reservation details</string>
+    <string name="somewhere_in_nowhere">Somewhere in Nowhere</string>
+    <string name="price">Price</string>
+    <string name="item_name">Item Name</string>
+    <string name="show_vegan_only">show Vegan Only</string>
+    <string name="aviv_coffee_menu">Aviv Coffee Menu</string>
+    <string name="back">Back</string>
+    <!-- Menu Items -->
+    <string name="item_espresso">Espresso</string>
+    <string name="item_cappuccino">Cappuccino</string>
+    <string name="item_soy_cappuccino">Soy Cappuccino</string>
+    <string name="item_americano">Americano</string>
+    <string name="item_sandwich">Sandwich</string>
+    <string name="item_vegan_sandwich">Sandwich</string>
+    <string name="item_latte">Latte</string>
+    <string name="item_chocolate_brownie">Chocolate Brownie</string>
+</resources>
