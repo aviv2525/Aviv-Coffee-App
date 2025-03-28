@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.Message
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
 import android.view.View
@@ -16,6 +17,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Calendar
+import kotlin.text.*
 
 class MainActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())
@@ -116,17 +118,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun showReservationDetails() {
         if (selectedDate.isNotEmpty() && selectedTime.isNotEmpty()) {
-            val message = "📅 Date: $selectedDate\n⏰ Time: $selectedTime\n👥 Guests: $selectedGuests"
+            val message = getString(R.string.reservation_message,selectedDate,selectedTime,selectedGuests)
             val spannableMessage = SpannableString(message)
-            spannableMessage.setSpan(RelativeSizeSpan(1.2f), 0, message.length, 0) // מגדיל טקסט ב-20%
+            spannableMessage.setSpan(RelativeSizeSpan(1.2f), 0, message.length, 0)
 
             AlertDialog.Builder(this)
-                .setTitle("Reservation Details")
+                .setTitle(getString(R.string.reservation_details))
                 .setMessage(spannableMessage)
-                .setPositiveButton("OK", null)
+                .setPositiveButton(getString(R.string.OK), null)
                 .show()
         } else {
-            Toast.makeText(this, "Empty reservation details", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.empty_reservation_details), Toast.LENGTH_SHORT).show()
         }
     }
 

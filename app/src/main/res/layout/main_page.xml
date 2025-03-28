@@ -65,7 +65,7 @@
         android:id="@+id/LocationBtn"
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
-        android:background="@color/material_on_background_emphasis_high_type"
+        android:background="@android:color/transparent"
         android:onClick="openLocationInMap"
         android:text="@string/somewhere_in_nowhere"
         android:textColor="@color/black"

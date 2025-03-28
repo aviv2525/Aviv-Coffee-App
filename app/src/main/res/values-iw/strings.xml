@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AvivCoffee</string>
+    <string name="app_name">קפה אביב</string>
     <string name="backBtn">חזור</string>
     <string name="reserve_seats">שמירת מקומות</string>
     <string name="aviv_coffee">קפה אביב</string>
@@ -19,5 +19,8 @@
     <string name="item_sandwich">כריך</string>
     <string name="item_vegan_sandwich">כריך טבעוני</string>
     <string name="item_latte">לאטה</string>
+    <string name="empty_reservation_details">לא קיימת הזמנה</string>
+    <string name="OK">אישור</string>
     <string name="item_chocolate_brownie">בראוניז שוקולד</string>
+    <string name="reservation_message">📅 תאריך: %1$s \n⏰ בשעה: %2$s \n👥 אורחים: %3$d</string>
 </resources>
