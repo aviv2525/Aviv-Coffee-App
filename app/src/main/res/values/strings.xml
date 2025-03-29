@@ -20,8 +20,11 @@
     <string name="item_vegan_sandwich">Sandwich</string>
     <string name="item_latte">Latte</string>
     <string name="empty_reservation_details">Empty reservation details</string>
-    <string name="OK">Latte</string>
+    <string name="OK">OK</string>
     <string name="item_chocolate_brownie">Chocolate Brownie</string>
+    <string name="not_possible_to_order">It is not possible to order for an hour that has already passed!</string>
+    <string name="invalid_timw_msg">Invalid Time</string>
+
     <string name="reservation_message">📅 Date: %1$s  \n⏰ Time: %2$s \n👥 Guests: %3$d</string>
 
 </resources>

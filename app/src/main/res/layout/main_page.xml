@@ -2,68 +2,87 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/background1"
     android:foregroundTint="#C78B5C"
     android:orientation="vertical"
-    android:padding="65dp">
+    android:padding="40dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/app_name"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
+
 
     <Button
         android:id="@+id/MenuBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginVertical="10dp"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="30dp"
         android:text="@string/menu"
         android:textSize="25sp"
-        android:textStyle="bold">
+        android:textStyle="bold"
+        android:backgroundTint="@color/newB"
+        android:textColor="@color/white"
+        tools:ignore="VisualLintButtonSize">
 
     </Button>
+
 
     <Button
         android:id="@+id/ReservationBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_marginVertical="10dp"
         android:layout_marginBottom="30dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:minWidth="200dp"
+        android:backgroundTint="@color/newB"
+        android:textColor="@color/white"
         android:text="@string/reservation_details"
         android:textSize="25sp"
-        android:textStyle="bold">
+        android:textStyle="bold"
+        tools:ignore="VisualLintButtonSize">
 
     </Button>
-
 
     <Button
         android:id="@+id/ReserveSeatsBtm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="@color/newB"
+        android:textColor="@color/white"
         android:layout_marginBottom="30dp"
         android:text="@string/reserve_seats"
         android:textSize="25sp"
-        android:textStyle="bold">
+        android:textStyle="bold"
+        tools:ignore="VisualLintButtonSize">
 
     </Button>
 
 
     <Button
+        android:id="@+id/LocationBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/LocationBtn"
         android:layout_gravity="center"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="30dp"
         android:background="@android:color/transparent"
         android:onClick="openLocationInMap"

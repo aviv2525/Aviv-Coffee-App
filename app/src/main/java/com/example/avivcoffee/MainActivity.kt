@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.Message
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
 import android.view.View
@@ -16,6 +15,10 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+
+
 import java.util.Calendar
 import kotlin.text.*
 
@@ -30,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     private var selectedDate: String = ""
     private var selectedTime: String = ""
     private var selectedGuests: Int = 1
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,23 +55,29 @@ class MainActivity : AppCompatActivity() {
 
         val menuButton = findViewById<Button>(R.id.MenuBtn)
 
+
         menuButton.setOnClickListener {
+            val rotateScaleAnim = AnimationUtils.loadAnimation(this, R.anim.rotate_scale)
+            it.startAnimation(rotateScaleAnim)
             val intent = Intent(this, MenuPageActivity::class.java)
             startActivity(intent)        }
 
 
         reserveSeatsBtn.setOnClickListener {
+            val bounceFade: Animation = AnimationUtils.loadAnimation(this, R.anim.click_anim)
+            reserveSeatsBtn.startAnimation(bounceFade)
             showDatePicker()
         }
 
-
-
         reservationBtn.setOnClickListener {
+            val bounceFade: Animation = AnimationUtils.loadAnimation(this, R.anim.click_anim)
+            reservationBtn.startAnimation(bounceFade)
             showReservationDetails()
         }
 
         val locationButton: Button = findViewById(R.id.LocationBtn)
         locationButton.setOnClickListener { openLocationInMap() }
+
 
     }
 
@@ -83,6 +91,7 @@ class MainActivity : AppCompatActivity() {
             selectedDate = "$selectedDay/${selectedMonth + 1}/$selectedYear"
             showGuestPicker()
         }, year, month, day)
+        datePickerDialog.datePicker.minDate = calendar.timeInMillis
 
         datePickerDialog.show()
     }
@@ -91,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         val guests = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10+")
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Select Number of Guests")
-        builder.setSingleChoiceItems(guests, 0) { _, which ->
+        builder.setSingleChoiceItems(guests, 1) { _, which ->
             selectedGuests = if (which == guests.size - 1) 10 else which + 1
         }
         builder.setPositiveButton("Next") { dialog, _ ->
@@ -110,8 +119,19 @@ class MainActivity : AppCompatActivity() {
         val minute = calendar.get(Calendar.MINUTE)
 
         val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
-            selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
-        }, hour, minute, true)
+            if (hour > selectedHour ||
+                (hour == selectedHour && selectedMinute < minute) ) {
+                AlertDialog.Builder(this).setTitle(getString(R.string.invalid_timw_msg))
+                    .setMessage(getString(R.string.not_possible_to_order))
+                    .setPositiveButton(getString(R.string.OK)) { dialog, _ -> dialog.dismiss() }
+                    .show()
+            }
+            else{
+                selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+            }
+        }, hour
+            , minute, true)
+
 
         timePickerDialog.show()
     }
@@ -143,7 +163,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Google Maps not installed", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

@@ -3,5 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#B30202</color>
-    <color name="newB">#4E2609</color>
+    <color name="newB">#3D1C0B</color>
+    <color name="newCoffeeColor">#3A2013</color>
+
 </resources>

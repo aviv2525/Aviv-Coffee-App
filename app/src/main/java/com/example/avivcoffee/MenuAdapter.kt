@@ -1,5 +1,6 @@
 package com.example.avivcoffee
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class MenuAdapter(private var itemList: List<MenuItem>) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
+    private var isImageExpanded = false
 
     class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemImage: ImageView = itemView.findViewById(R.id.itemImage)
@@ -26,8 +28,28 @@ class MenuAdapter(private var itemList: List<MenuItem>) : RecyclerView.Adapter<M
         holder.itemImage.setImageResource(currentItem.imageResId)
         holder.itemName.text = currentItem.name
         holder.itemPrice.text = currentItem.price
+
+        holder.itemImage.setOnClickListener {
+            val layoutParams = holder.itemImage.layoutParams
+            if (layoutParams.width == ViewGroup.LayoutParams.MATCH_PARENT) {
+                // מחזירים לגודל המקורי
+                layoutParams.width = 90.dpToPx()
+                layoutParams.height = 90.dpToPx()
+                holder.itemImage.scaleType = ImageView.ScaleType.CENTER_CROP
+            } else {
+                // מגדילים לגודל מלא
+                layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
+                layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                holder.itemImage.scaleType = ImageView.ScaleType.FIT_CENTER
+            }
+            holder.itemImage.layoutParams = layoutParams
+        }
+
     }
 
+    fun Int.dpToPx(): Int {
+        return (this * Resources.getSystem().displayMetrics.density).toInt()
+    }
     override fun getItemCount(): Int {
         return itemList.size
     }
