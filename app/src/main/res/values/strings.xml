@@ -16,15 +16,25 @@
     <string name="item_cappuccino">Cappuccino</string>
     <string name="item_soy_cappuccino">Soy Cappuccino</string>
     <string name="item_americano">Americano</string>
+    <string name="filter_coffee">Filter Coffee</string>
+    <string name="banana_muffins">Banana Muffin</string>
+    <string name="chocolate_cake">Chocolate Cake</string>
+
     <string name="item_sandwich">Sandwich</string>
     <string name="item_vegan_sandwich">Sandwich</string>
     <string name="item_latte">Latte</string>
     <string name="empty_reservation_details">Empty reservation details</string>
     <string name="OK">OK</string>
+    <string name="next">Next</string>
+    <string name="cancel">Cancel</string>
     <string name="item_chocolate_brownie">Chocolate Brownie</string>
     <string name="not_possible_to_order">It is not possible to order for an hour that has already passed!</string>
-    <string name="invalid_timw_msg">Invalid Time</string>
-
+    <string name="invalid_time_msg" >Invalid Time</string>
+    <string name="select_number_of_guests">Select Number of Guests</string>
     <string name="reservation_message">📅 Date: %1$s  \n⏰ Time: %2$s \n👥 Guests: %3$d</string>
-
+    <string name="non_smoke">Non Smoke</string>
+    <string name="smoke">Smoke</string>
+    <string name="everywhere">Everywhere</string>
+    <string name="smoking_area">\n🚬 Smoking Area: %1$s</string>
+    <string name="location_will_be_provided_soon">Location will be provided SOON</string>
 </resources>

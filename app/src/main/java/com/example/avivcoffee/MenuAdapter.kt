@@ -32,12 +32,10 @@ class MenuAdapter(private var itemList: List<MenuItem>) : RecyclerView.Adapter<M
         holder.itemImage.setOnClickListener {
             val layoutParams = holder.itemImage.layoutParams
             if (layoutParams.width == ViewGroup.LayoutParams.MATCH_PARENT) {
-                // מחזירים לגודל המקורי
                 layoutParams.width = 90.dpToPx()
                 layoutParams.height = 90.dpToPx()
                 holder.itemImage.scaleType = ImageView.ScaleType.CENTER_CROP
             } else {
-                // מגדילים לגודל מלא
                 layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT
                 layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
                 holder.itemImage.scaleType = ImageView.ScaleType.FIT_CENTER

@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.text.SpannableString
 import android.text.style.RelativeSizeSpan
+import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
@@ -17,6 +18,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import androidx.appcompat.app.AlertDialog.Builder
+import androidx.core.content.ContextCompat
 
 
 import java.util.Calendar
@@ -33,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     private var selectedDate: String = ""
     private var selectedTime: String = ""
     private var selectedGuests: Int = 1
-
+    private var selectedSmokeArea: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,22 +102,101 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showGuestPicker() {
-        val guests = arrayOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10+")
+        val guests = arrayOf("1", "2", "3", "4", "5", "6", "7+")
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Select Number of Guests")
         builder.setSingleChoiceItems(guests, 1) { _, which ->
             selectedGuests = if (which == guests.size - 1) 10 else which + 1
         }
-        builder.setPositiveButton("Next") { dialog, _ ->
+
+
+
+        val radioGroup = RadioGroup(this).apply {
+            orientation = LinearLayout.HORIZONTAL
+            setPadding(20, 10, 20, 10)
+        }
+
+        val smokeButton = RadioButton(this).apply {
+            text = context.getString(R.string.smoke)
+            textSize = 16f
+            setPadding(30,0,30,0)
+            gravity = Gravity.CENTER
+            background = ContextCompat.getDrawable(context, R.drawable.radio_button_square)
+            id = View.generateViewId()
+        }
+
+        val non_smokeButton = RadioButton(this).apply {
+            text = context.getString(R.string.non_smoke)
+            textSize = 16f
+            setPadding(30, 0, 30, 0)
+            gravity = Gravity.CENTER
+            background = ContextCompat.getDrawable(context, R.drawable.radio_button_square)
+
+            id = View.generateViewId()
+        }
+
+
+        radioGroup.addView(smokeButton)
+        radioGroup.addView(non_smokeButton)
+
+        builder.setView(radioGroup)
+        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+        selectedSmokeArea = when (radioGroup.checkedRadioButtonId) {
+            smokeButton.id -> getString(R.string.smoke)
+            non_smokeButton.id -> getString(R.string.non_smoke)
+            else ->  getString(R.string.everywhere)
+            }
+        }
+        builder.setPositiveButton(getString(R.string.next)) { dialog, _ ->
             dialog.dismiss()
             showTimePicker()
+            //showPaymentMethod()
+
         }
-        builder.setNegativeButton("Cancel") { dialog, _ ->
+        builder.setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
             dialog.dismiss()
         }
         builder.show()
     }
-
+//    private fun showPaymentMethod() {
+//        val builder = AlertDialog.Builder(this)
+//        builder.setTitle("Select Payment Method")
+//
+//        val radioGroup = RadioGroup(this).apply {
+//            orientation = LinearLayout.HORIZONTAL
+//            setPadding(20, 20, 20, 20)
+//        }
+//        val creditCardRadioButton = RadioButton(this).apply {
+//            text = "Credit Card"
+//            id = View.generateViewId()
+//        }
+//
+//        val cashRadioButton = RadioButton(this).apply {
+//            text = "Cash"
+//            id = View.generateViewId()
+//        }
+//
+//        val bothRadioButton = RadioButton(this).apply {
+//            text = "Other"
+//            id = View.generateViewId()
+//        }
+//        radioGroup.addView(creditCardRadioButton)
+//        radioGroup.addView(cashRadioButton)
+//        radioGroup.addView(bothRadioButton)
+//
+//        builder.setView(radioGroup)
+//        val selectedPaymentMethod = when (radioGroup.checkedRadioButtonId) {
+//            creditCardRadioButton.id -> "Credit Card"
+//            cashRadioButton.id -> "Cash"
+//            bothRadioButton.id -> "Credit Card and Cash"
+//            else -> "None"
+//        }
+//        builder.setPositiveButton("Next") { dialog,_ ->
+//            dialog.dismiss()
+//            showTimePicker()
+//        }
+//        builder.show()
+//    }
     private fun showTimePicker() {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
@@ -121,7 +205,7 @@ class MainActivity : AppCompatActivity() {
         val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
             if (hour > selectedHour ||
                 (hour == selectedHour && selectedMinute < minute) ) {
-                AlertDialog.Builder(this).setTitle(getString(R.string.invalid_timw_msg))
+                AlertDialog.Builder(this).setTitle(getString(R.string.invalid_time_msg))
                     .setMessage(getString(R.string.not_possible_to_order))
                     .setPositiveButton(getString(R.string.OK)) { dialog, _ -> dialog.dismiss() }
                     .show()
@@ -138,7 +222,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun showReservationDetails() {
         if (selectedDate.isNotEmpty() && selectedTime.isNotEmpty()) {
-            val message = getString(R.string.reservation_message,selectedDate,selectedTime,selectedGuests)
+            val smokeMessage = if (selectedSmokeArea.isNotEmpty()) selectedSmokeArea else "Everywhere"
+            val message = getString(R.string.reservation_message,selectedDate,selectedTime,selectedGuests) + getString(R.string.smoking_area, smokeMessage)
+
             val spannableMessage = SpannableString(message)
             spannableMessage.setSpan(RelativeSizeSpan(1.2f), 0, message.length, 0)
 
@@ -160,7 +246,8 @@ class MainActivity : AppCompatActivity() {
         if (mapIntent.resolveActivity(packageManager) != null) {
             startActivity(mapIntent)
         } else {
-            Toast.makeText(this, "Google Maps not installed", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,
+                getString(R.string.location_will_be_provided_soon), Toast.LENGTH_SHORT).show()
         }
     }
 

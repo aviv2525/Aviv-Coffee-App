@@ -16,13 +16,24 @@
     <string name="item_cappuccino">קפה הפוך</string>
     <string name="item_soy_cappuccino">קפה סויה</string>
     <string name="item_americano">אמריקנו</string>
+    <string name="chocolate_cake">עוגת שוקולד</string>
     <string name="item_sandwich">כריך</string>
     <string name="item_vegan_sandwich">כריך טבעוני</string>
     <string name="item_latte">לאטה</string>
     <string name="empty_reservation_details">לא קיימת הזמנה</string>
     <string name="OK">אישור</string>
+    <string name="cancel">ביטול</string>
     <string name="item_chocolate_brownie">בראוניז שוקולד</string>
     <string name="not_possible_to_order">לא ניתן להזמין לשעה שכבר חלפה! בחר שעה עתידית</string>
-    <string name="invalid_timw_msg">שעה לא חוקית</string>
+    <string name="invalid_time_msg">זמן לא תקין</string>
+    <string name="select_number_of_guests">בחר מספר סועדים</string>
     <string name="reservation_message">📅 תאריך: %1$s \n⏰ בשעה: %2$s \n👥 אורחים: %3$d</string>
+    <string name="non_smoke">לא מעשנים</string>
+    <string name="smoke">מעשנים</string>
+    <string name="next">המשך</string>
+    <string name="everywhere">לא משנה</string>
+    <string name="smoking_area">\n🚬 אזור עישון: %1$s</string>
+    <string name="filter_coffee">קפה פילטר</string>
+    <string name="banana_muffins">מאפינס בננה</string>
+    <string name="location_will_be_provided_soon">מיקום בהמשך ( הפתיחה בקרוב! )</string>
 </resources>

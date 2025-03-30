@@ -23,13 +23,16 @@ class MenuPageActivity : AppCompatActivity() {
 
         val menuItems = listOf(
         MenuItem(getString(R.string.item_espresso), "10₪", R.drawable.espresso3, true),
-        MenuItem(getString(R.string.item_cappuccino), "15₪", R.drawable.cappuccinos, false),
-        MenuItem(getString(R.string.item_soy_cappuccino), "12₪", R.drawable.soy_cappuccino, true),
+        MenuItem(getString(R.string.item_cappuccino), "13₪", R.drawable.cappuccinos, false),
+        MenuItem(getString(R.string.item_soy_cappuccino), "13₪", R.drawable.soy_cappuccino, true),
         MenuItem(getString(R.string.item_americano), "12₪", R.drawable.espresso1, true),
-        MenuItem(getString(R.string.item_sandwich), "12₪", R.drawable.sandwich, false),
-        MenuItem(getString(R.string.item_sandwich), "12₪", R.drawable.vegan_sandwiches, true),
-        MenuItem(getString(R.string.item_latte), "18₪", R.drawable.cappu, false),
-        MenuItem(getString(R.string.item_chocolate_brownie), "18₪", R.drawable.brownie, false)
+        MenuItem(getString(R.string.filter_coffee), "17₪", R.drawable.filtercoffee, true),
+        MenuItem(getString(R.string.banana_muffins), "20₪", R.drawable.banana_muffins, true),
+        MenuItem(getString(R.string.item_sandwich), "27₪", R.drawable.sandwich, false),
+        MenuItem(getString(R.string.item_vegan_sandwich), "22₪", R.drawable.vegan_sandwiches, true),
+        MenuItem(getString(R.string.chocolate_cake), "27₪", R.drawable.chocolate_cake, false),
+        MenuItem(getString(R.string.item_latte), "13₪", R.drawable.cappu, false),
+        MenuItem(getString(R.string.item_chocolate_brownie), "20₪", R.drawable.brownie, false)
     )
 
 
