@@ -24,6 +24,7 @@ import androidx.core.content.ContextCompat
 
 
 import java.util.Calendar
+import java.util.Date
 import kotlin.text.*
 
 class MainActivity : AppCompatActivity() {
@@ -180,14 +181,19 @@ class MainActivity : AppCompatActivity() {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val selectedDayInt = selectedDate.split("/").getOrNull(0)?.toIntOrNull()
 
         val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
-            if (hour > selectedHour ||
-                (hour == selectedHour && selectedMinute < minute) ) {
-                AlertDialog.Builder(this).setTitle(getString(R.string.invalid_time_msg))
-                    .setMessage(getString(R.string.not_possible_to_order))
-                    .setPositiveButton(getString(R.string.OK)) { dialog, _ -> dialog.dismiss() }
-                    .show()
+            if(day == selectedDayInt) {
+                if (hour > selectedHour ||
+                    (hour == selectedHour && selectedMinute < minute)
+                ) {
+                    AlertDialog.Builder(this).setTitle(getString(R.string.invalid_time_msg))
+                        .setMessage(getString(R.string.not_possible_to_order))
+                        .setPositiveButton(getString(R.string.OK)) { dialog, _ -> dialog.dismiss() }
+                        .show()
+                }
             }
             else{
                 selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
