@@ -20,7 +20,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import androidx.appcompat.app.AlertDialog.Builder
 import androidx.core.content.ContextCompat
 
 
@@ -43,9 +42,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_page)
-
         val mainPage = findViewById<LinearLayout>(R.id.main_layout)
-
+        // background change every 5 second :)
         val changeBackgroundRunnable = object : Runnable {
             override fun run() {
                 currentImageIndex = (currentImageIndex + 1) % images.size
@@ -60,13 +58,11 @@ class MainActivity : AppCompatActivity() {
 
         val menuButton = findViewById<Button>(R.id.MenuBtn)
 
-
         menuButton.setOnClickListener {
             val rotateScaleAnim = AnimationUtils.loadAnimation(this, R.anim.rotate_scale)
             it.startAnimation(rotateScaleAnim)
             val intent = Intent(this, MenuPageActivity::class.java)
             startActivity(intent)        }
-
 
         reserveSeatsBtn.setOnClickListener {
             val bounceFade: Animation = AnimationUtils.loadAnimation(this, R.anim.click_anim)
@@ -80,10 +76,31 @@ class MainActivity : AppCompatActivity() {
             showReservationDetails()
         }
 
+        val ContactUs: Button = findViewById(R.id.Connect_usBtn)
+        ContactUs.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle(getString(R.string.contact_us))
+            builder.setMessage(getString(R.string.mobile_phone_052_8749406))
+
+            builder.setNegativeButtonIcon(getDrawable(R.drawable.baseline_info_24))
+            builder.setNegativeButton(getString(R.string.linkedin)) { _, _ ->
+                val linkedInUrl = "https://www.linkedin.com/in/aviv-malul-46a064216/"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(linkedInUrl))
+                startActivity(intent)
+            }
+
+            builder.setNeutralButton(getString(R.string.cancel)) { dialog, _ ->
+                dialog.dismiss()
+            }
+
+            val dialog = builder.create()
+            dialog.show()
+        }
+
         val locationButton: Button = findViewById(R.id.LocationBtn)
-        locationButton.setOnClickListener { openLocationInMap() }
-
-
+        locationButton.setOnClickListener {
+            openLocationInMap()
+        }
     }
 
     private fun showDatePicker() {
@@ -158,45 +175,7 @@ class MainActivity : AppCompatActivity() {
         }
         builder.show()
     }
-//    private fun showPaymentMethod() {
-//        val builder = AlertDialog.Builder(this)
-//        builder.setTitle("Select Payment Method")
-//
-//        val radioGroup = RadioGroup(this).apply {
-//            orientation = LinearLayout.HORIZONTAL
-//            setPadding(20, 20, 20, 20)
-//        }
-//        val creditCardRadioButton = RadioButton(this).apply {
-//            text = "Credit Card"
-//            id = View.generateViewId()
-//        }
-//
-//        val cashRadioButton = RadioButton(this).apply {
-//            text = "Cash"
-//            id = View.generateViewId()
-//        }
-//
-//        val bothRadioButton = RadioButton(this).apply {
-//            text = "Other"
-//            id = View.generateViewId()
-//        }
-//        radioGroup.addView(creditCardRadioButton)
-//        radioGroup.addView(cashRadioButton)
-//        radioGroup.addView(bothRadioButton)
-//
-//        builder.setView(radioGroup)
-//        val selectedPaymentMethod = when (radioGroup.checkedRadioButtonId) {
-//            creditCardRadioButton.id -> "Credit Card"
-//            cashRadioButton.id -> "Cash"
-//            bothRadioButton.id -> "Credit Card and Cash"
-//            else -> "None"
-//        }
-//        builder.setPositiveButton("Next") { dialog,_ ->
-//            dialog.dismiss()
-//            showTimePicker()
-//        }
-//        builder.show()
-//    }
+
     private fun showTimePicker() {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
@@ -220,6 +199,8 @@ class MainActivity : AppCompatActivity() {
         timePickerDialog.show()
     }
 
+    // All the details include Smoking area
+    // Payment method replace with smoking area ( in my opinion more important )
     private fun showReservationDetails() {
         if (selectedDate.isNotEmpty() && selectedTime.isNotEmpty()) {
             val smokeMessage = if (selectedSmokeArea.isNotEmpty()) selectedSmokeArea else "Everywhere"
@@ -238,17 +219,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // option for the future, maybe this place will open and have a real location one day
     private fun openLocationInMap() {
-        val gmmIntentUri = Uri.parse("geo:0,0?q=32.0853,34.7818(TLV Cafe)")
-        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-        mapIntent.setPackage("com.google.android.apps.maps")
+    Toast.makeText(this,
+        getString(R.string.location_will_be_provided_soon), Toast.LENGTH_SHORT).show()
 
-        if (mapIntent.resolveActivity(packageManager) != null) {
-            startActivity(mapIntent)
-        } else {
-            Toast.makeText(this,
-                getString(R.string.location_will_be_provided_soon), Toast.LENGTH_SHORT).show()
-        }
     }
 
     override fun onDestroy() {
@@ -256,5 +231,5 @@ class MainActivity : AppCompatActivity() {
         handler.removeCallbacksAndMessages(null)
     }
 
-    fun openLocationInMap(view: View) {}
+
 }

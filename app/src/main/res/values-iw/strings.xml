@@ -7,11 +7,13 @@
     <string name="menu">תפריט</string>
     <string name="reservation_details">פרטי הזמנה</string>
     <string name="somewhere_in_nowhere">איפשהו בעולם</string>
+    <string name="add_nots">הוסף הערה</string>
     <string name="price">מחיר</string>
     <string name="item_name">שם המוצר</string>
     <string name="show_vegan_only">הצג טבועני בלבד</string>
     <string name="aviv_coffee_menu">קפה אביב תפריט</string>
     <string name="back">חזור</string>
+    <string name="Connect_usBtn">צור קשר</string>
     <string name="item_espresso">אספרסו</string>
     <string name="item_cappuccino">קפה הפוך</string>
     <string name="item_soy_cappuccino">קפה סויה</string>
@@ -36,4 +38,9 @@
     <string name="filter_coffee">קפה פילטר</string>
     <string name="banana_muffins">מאפינס בננה</string>
     <string name="location_will_be_provided_soon">מיקום בהמשך ( הפתיחה בקרוב! )</string>
+    <string name="note">הערות</string>
+    <string name="add_your_note_here">הוסף את הערות כאן</string>
+    <string name="contact_us">צור קשר</string>
+    <string name="mobile_phone_052_8749406">נייד : 052-8749406</string>
+    <string name="linkedin">לינקדין</string>
 </resources>

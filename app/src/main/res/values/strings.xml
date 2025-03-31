@@ -6,11 +6,13 @@
     <string name="menu">Menu</string>
     <string name="reservation_details">Reservation details</string>
     <string name="somewhere_in_nowhere">Somewhere in Nowhere</string>
+    <string name="add_nots">Add Note</string>
     <string name="price">Price</string>
     <string name="item_name">Item Name</string>
     <string name="show_vegan_only">show Vegan Only</string>
     <string name="aviv_coffee_menu">Aviv Coffee Menu</string>
     <string name="back">Back</string>
+    <string name="Connect_usBtn">Contact us</string>
     <!-- Menu Items -->
     <string name="item_espresso">Espresso</string>
     <string name="item_cappuccino">Cappuccino</string>
@@ -37,4 +39,9 @@
     <string name="everywhere">Everywhere</string>
     <string name="smoking_area">\n🚬 Smoking Area: %1$s</string>
     <string name="location_will_be_provided_soon">Location will be provided SOON</string>
+    <string name="note">\n Note: %1$s</string>
+    <string name="add_your_note_here">Add your note here</string>
+    <string name="contact_us">Contact us</string>
+    <string name="mobile_phone_052_8749406">Mobile phone: 052-8749406</string>
+    <string name="linkedin">LinkedIn</string>
 </resources>

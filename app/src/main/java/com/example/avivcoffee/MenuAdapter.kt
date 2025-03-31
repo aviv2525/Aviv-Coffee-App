@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class MenuAdapter(private var itemList: List<MenuItem>) : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
-    private var isImageExpanded = false
 
     class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val itemImage: ImageView = itemView.findViewById(R.id.itemImage)

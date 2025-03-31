@@ -73,7 +73,21 @@
         android:textSize="25sp"
         android:textStyle="bold"
         tools:ignore="VisualLintButtonSize">
+    </Button>
 
+    <Button
+        android:id="@+id/Connect_usBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="@color/newB"
+        android:textColor="@color/white"
+        android:layout_marginBottom="30dp"
+        android:text="@string/Connect_usBtn"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:ignore="VisualLintButtonSize">
     </Button>
 
 
@@ -85,7 +99,6 @@
         android:layout_marginTop="40dp"
         android:layout_marginBottom="30dp"
         android:background="@android:color/transparent"
-        android:onClick="openLocationInMap"
         android:text="@string/somewhere_in_nowhere"
         android:textColor="@color/black"
         android:textSize="17sp"
